@@ -1,0 +1,19 @@
+{
+  "name": "@scandipwa/webpack-template-plugin-loader",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "debug": "node index.js"
+  },
+  "scandipwa": {
+    "type": "extension",
+    "build": {
+        "cracoPlugins": [
+            "build-config/config.plugin.js"
+        ]
+    }
+  },
+  "author": "",
+  "license": "ISC"
+}
