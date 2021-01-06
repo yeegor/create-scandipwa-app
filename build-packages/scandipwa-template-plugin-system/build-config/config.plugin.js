@@ -1,5 +1,7 @@
 /* eslint-disable no-param-reassign */
 
+// TODO support any provided template typings
+
 // Load the locale map with import injector
 const addTemplatesMiddleware = (config) => {
     config.module.rules.push({
