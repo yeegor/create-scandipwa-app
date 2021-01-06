@@ -24,6 +24,7 @@ yarn-error.log*
 
 runtime-packages/csa
 runtime-packages/csa/**/*
+runtime-packages/scandipwa
 
 # build specifc files
 lerna-debug.log
