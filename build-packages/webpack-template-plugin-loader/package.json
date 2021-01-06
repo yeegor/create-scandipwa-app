@@ -9,11 +9,14 @@
   "scandipwa": {
     "type": "extension",
     "build": {
-        "cracoPlugins": [
-            "build-config/config.plugin.js"
-        ]
+      "cracoPlugins": [
+        "build-config/config.plugin.js"
+      ]
     }
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "xmldom": "0.4.0"
+  }
 }
