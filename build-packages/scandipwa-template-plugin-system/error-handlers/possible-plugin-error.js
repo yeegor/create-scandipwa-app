@@ -9,7 +9,7 @@ const logger = require('@scandipwa/scandipwa-dev-utils/logger');
  * @param {string} name processable plugin's name
  * @returns {any} the result of the callback
  */
-module.exports = (cb, name) => {
+module.exports = (name, cb) => {
     if (!name) {
         throw new Error(
             'The plugin\'s name has not been provided to the possible error handler!'
@@ -19,9 +19,15 @@ module.exports = (cb, name) => {
     try {
         return cb();
     } catch (err) {
+        const { message = '' } = err;
+
+        // reformat the message for prettier outpit
+        const trimmedMessage = message.replace(/^( |\t)+/gm, '');
+        const trimmedMessageLines = trimmedMessage.split('\n');
+
         logger.error(
-            `The "${name}" template plugin is malfunctioning; it has thrown the following error:`,
-            err.message
+            `${logger.style.code(name)} module's template plugin has thrown the following error:`,
+            ...trimmedMessageLines
         );
 
         process.exit(255);
