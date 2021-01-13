@@ -8,8 +8,7 @@
     "scandipwa": {
         "extensions": {
             "@scandipwa/scandipwa-extensibility": true,
-            "@scandipwa/scandipwa-template-plugin-system": true,
-            "@scandipwa/webpack-after-emit-logger": true
+            "@scandipwa/scandipwa-template-plugin-system": true
         }
     },
     "files": [
@@ -22,6 +21,7 @@
         "@scandipwa/eslint-config": "0.1.9",
         "@scandipwa/scandipwa-dev-utils": "0.0.19",
         "@scandipwa/scandipwa-extensibility": "1.0.3",
+        "@scandipwa/scandipwa-template-plugin-system": "0.1.0",
         "@scandipwa/webpack-extension-import-loader": "0.0.16",
         "@scandipwa/webpack-fallback-plugin": "1.1.4",
         "@scandipwa/webpack-i18n-plugin": "0.1.4",
