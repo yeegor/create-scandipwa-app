@@ -5,11 +5,10 @@ const fs = require('fs');
 const sassResourcesLoader = require('craco-sass-resources-loader');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+// const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const FallbackPlugin = require('@scandipwa/webpack-fallback-plugin');
 const { getPackageJson } = require('@scandipwa/scandipwa-dev-utils/package-json');
-const extensions = require('@scandipwa/scandipwa-dev-utils/extensions');
-const I18nPlugin = require('@scandipwa/webpack-i18n-plugin');
 
 const {
     ESLINT_MODES,
@@ -19,25 +18,21 @@ const {
 } = require('@scandipwa/craco');
 
 const { cracoPlugins } = require('./lib/build-plugins');
+const { sources } = require('./lib/sources');
 const alias = require('./lib/alias');
 const when = require('./lib/when');
-
-// we still need Sources for aliases, etc
-const { sources } = require('./lib/sources');
 
 const isDev = process.env.NODE_ENV === 'development';
 
 module.exports = () => {
-    const abstractStyle = FallbackPlugin.getFallbackPathname('src/style/abstract/_abstract.scss');
-    const appIndexJs = FallbackPlugin.getFallbackPathname('src/index.js');
-    const appHtml = FallbackPlugin.getFallbackPathname('public/index.html');
+    const abstractStyle = FallbackPlugin.getFallbackPathname('src/style/abstract/_abstract.scss', sources);
+    const appIndexJs = FallbackPlugin.getFallbackPathname('src/index.js', sources);
+    const appHtml = FallbackPlugin.getFallbackPathname('public/index.html', sources);
 
     // Use ESLint config defined in package.json or fallback to default one
     const eslintConfig = getPackageJson(process.cwd()).eslintConfig || {
         extends: [require.resolve('@scandipwa/eslint-config')]
     };
-
-    // TODO: add legacy i18n support !
 
     return {
         paths: {
@@ -127,18 +122,6 @@ module.exports = () => {
                         // Allow everything to be processed by babel
                         loader.include = undefined;
                     });
-                }
-
-                const isNewI18n = extensions.some(
-                    ({ packageName }) => packageName === '@scandipwa/webpack-i18n-runtime'
-                );
-
-                // Include Legacy translations for everyone not using new translations
-                if (!isNewI18n) {
-                    webpackConfig.plugins.push(new I18nPlugin({
-                        locale: process.env.PWA_LOCALE,
-                        defaultLocale: 'en_US'
-                    }));
                 }
 
                 // Allow having empty entry point

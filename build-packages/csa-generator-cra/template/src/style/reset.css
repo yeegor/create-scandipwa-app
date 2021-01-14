@@ -31,12 +31,10 @@ dd {
 
 /* Set core body defaults */
 body {
-  line-height: 1.5;
   min-height: 100vh;
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
 }
 
 /* Remove list styles on ul, ol elements with a class attribute */

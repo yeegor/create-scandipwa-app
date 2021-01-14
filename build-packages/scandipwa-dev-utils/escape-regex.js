@@ -1,5 +1,2 @@
-const escapeRegex = (string) => string
-    .replace(/[|\\{}()[\]^$+*?.]/g, '\\$&')
-    .replace(/-/g, '\\x2d');
-
+const escapeRegex = (string) => string.replace(/[.*+\-?^${}()|[\]\\]/g, '\\$&');
 module.exports = escapeRegex;
