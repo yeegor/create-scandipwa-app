@@ -1,10 +1,11 @@
 {
     "name": "@scandipwa/webpack-after-emit-logger",
-    "version": "0.0.0",
+    "description": "Webpack logger plugin used used by CSA.",
+    "version": "0.0.2",
     "license": "proprietary",
     "main": "src/index.js",
     "dependencies": {
-        "@scandipwa/scandipwa": "3.2.4-alpha.2"
+        "@scandipwa/scandipwa-dev-utils": "0.0.20"
     },
     "scandipwa": {
         "type": "extension",
@@ -13,5 +14,8 @@
                 "build-config/config.plugin.js"
             ]
         }
+    },
+    "publishConfig": {
+        "access": "public"
     }
 }
